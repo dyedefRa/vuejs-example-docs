@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .component{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <h1>Passing data with Props</h1>
+    <my-component msg="Hello World"></my-component>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    Vue.component('my-component', {
+        // declare the props
+        props: ['msg'],
+        // the prop can be used inside templates, and will also
+        // be set as `this.msg`
+        template: '<div class="component">{{msg}}</div>'
+    });
+
+    var vm = new Vue({
+        el: '#example',
+        data:{
+            show: false
+        }
+    });
+</script>
+</body>
+</html>

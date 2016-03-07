@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .component{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <h1>Dynamic Props</h1>
+
+    <input type="text" v-model="parentMessage" />
+
+    <my-component msg="Hello World" v-bind:my-message="parentMessage"></my-component>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    Vue.component('my-component', {
+        // declare the props
+        props: ['msg','myMessage'],
+        // the prop can be used inside templates, and will also
+        // be set as `this.msg`
+        template: '<div class="component">Prop: {{msg}} <br> Message from parent: {{myMessage}}</div>'
+    });
+
+    var vm = new Vue({
+        el: '#example',
+        data:{
+            parentMessage: 'Hello World form parent'
+        }
+    });
+</script>
+</body>
+</html>
