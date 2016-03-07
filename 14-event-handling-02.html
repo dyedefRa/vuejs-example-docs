@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example">
+        <button v-on:click="say('hi')">Say Hi</button>
+        <button v-on:click="say('what')">Say What</button>
+        <button v-on:click="say2('what', $event)">Say What with event</button>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            methods: {
+                say: function(msg){
+                    alert(msg);
+                },
+                say2: function(msg, event){
+                    event.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

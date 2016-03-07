@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example">
+        <!--the click event's propagation will be stopped-->
+        <a href v-on:click.stop="doThis">doThis</a>
+
+        <!-- the submit event will no longer reload the page -->
+        <form v-on:submit.prevent="onSubmit">
+            <button type="submit">Enviar</button>
+        </form>
+
+        <!-- modifiers can be chained -->
+        <a v-on:click.stop.prevent="doThat">doThat</a>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            methods: {
+                doThis: function(){
+                    alert('doThis');
+                },
+                doThat: function(){
+                    alert('doThat');
+                },
+                onSubmit: function(){
+                    alert('não recarrega a página')
+                }
+            }
+        });
+    </script>
+</body>
+</html>
