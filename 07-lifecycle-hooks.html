@@ -5,15 +5,22 @@
     <title>Data binding</title>
 </head>
 <body>
+    <div id="teste">
+        {{a}}
+    </div>
     <script src="vue.js"></script>
     <script>
         var vm = new Vue({
+            el: '#teste',
             data: {
                 a: 1
             },
             created: function () {
                 // `this` points to the vm instance
                 console.log('a is: ' + this.a)
+            },
+            ready: function(){
+                console.log('ready');
             }
         })
     </script>
