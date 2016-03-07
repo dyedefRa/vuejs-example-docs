@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example">
+        <parent-component></parent-component>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var Child = Vue.extend({
+            template: '<div>Child component</div>'
+        });
+
+        var Parent = Vue.extend({
+            template: '<strong>Parent component</strong><my-component></my-component>',
+            components: {
+                // <my-component> will only be available in Parent's template
+                'my-component': Child
+            }
+        });
+
+        //register
+        Vue.component('parent-component', Parent);
+
+        var vm = new Vue({
+            el: '#example',
+            data:{
+                show: false
+            }
+        });
+    </script>
+</body>
+</html>
