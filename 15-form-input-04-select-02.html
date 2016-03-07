@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example">
+        <p>Dynamic options rendered with v-for</p>
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <br>
+        <span>Selected: {{ selected }}</span>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data:{
+                selected: 'B',
+                options: [
+                    {text: 'One', value: 'A'},
+                    {text: 'Two', value: 'B'},
+                    {text: 'Three', value: 'C'},
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

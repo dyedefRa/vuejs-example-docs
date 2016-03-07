@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example">
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+
+        <br>
+        <span>Checked names: {{ checkedNames | json }}</span><br>
+        <span>Checked names: {{ checkedNames }}</span>
+
+        <hr>
+
+        <input type="checkbox"
+                v-model="toggle"
+                v-bind:true-value="'a'"
+                v-bind:false-value="'b'">
+        <br>
+        <span>Toggle: {{ toggle }}</span>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data: {
+                checkedNames: [],
+                toggle: true
+            }
+        });
+    </script>
+</body>
+</html>

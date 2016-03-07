@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example">
+        <span>Message is: {{ message }}</span>
+        <br />
+        <input v-model="message" number>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example'
+        });
+    </script>
+</body>
+</html>

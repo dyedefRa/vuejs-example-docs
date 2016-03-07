@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example">
+        <select v-model="selected">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>Selected: {{ selected }}</span>
+
+        <hr>
+
+        <select v-model="multiSelected" multiple>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>Selected: {{ multiSelected }}</span><br>
+        <span>Selected: {{ multiSelected | json }}</span>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data:{
+                selected: 'B',
+                multiSelected: ["C","A"],
+            }
+        });
+    </script>
+</body>
+</html>
