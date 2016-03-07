@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="demo">
+        <h1 v-if="ok">Ok</h1>
+        <h1 v-else>Houston, we have a problem!</h1>
+        <label><input type="checkbox" v-model="ok">OK</label>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                ok: true
+            }
+        });
+    </script>
+</body>
+</html>

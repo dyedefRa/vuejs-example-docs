@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="demo">
+        <p>Show/hide more tha one element</p>
+        <label><input type="checkbox" v-model="ok">OK</label>
+
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci commodi cumque magni quam voluptas voluptate? At, corporis, cumque dolor facere ipsum neque nihil nobis porro, quos recusandae sequi sunt veniam?</p>
+        </template>
+        <template v-else>
+            <p>Nothing here! Follow these steps to create another item:</p>
+            <ul>
+                <li>Create an item</li>
+                <li>Define the due date</li>
+                <li>Mark when the item is done</li>
+            </ul>
+        </template>
+
+        <p v-show="ok"><strong>This is always rendered in DOM, but uses display CSS property</strong></p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                ok: true
+            }
+        });
+    </script>
+</body>
+</html>
