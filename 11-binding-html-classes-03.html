@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .static{
+            border: 1px solid black;
+        }
+        .class-a{
+            background-color: yellow;
+        }
+        .class-b{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <p class="static" v-bind:class="[classA, classB]">
+            Modificando as classes com bind:class
+        </p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                classA:'class-a',
+                classB: 'class-b'
+            }
+        });
+    </script>
+</body>
+</html>

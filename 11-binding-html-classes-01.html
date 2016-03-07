@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .static{
+            border: 1px solid black;
+        }
+        .class-a{
+            background-color: yellow;
+        }
+        .class-b{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <p class="static" v-bind:class="{ 'class-a':isA, 'class-b':isB}">
+            Modificando as classes com bind:class
+        </p>
+
+        <label><input type="checkbox" v-model="isA">isA</label>
+        <label><input type="checkbox" v-model="isB">isB</label>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                isA: true,
+                isB: false
+            }
+        });
+    </script>
+</body>
+</html>

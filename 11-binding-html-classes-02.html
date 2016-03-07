@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .static{
+            border: 1px solid black;
+        }
+        .class-a{
+            background-color: yellow;
+        }
+        .class-b{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <p class="static" v-bind:class="classObject">
+            Modificando as classes com bind:class
+        </p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                classObject: {
+                    'class-a': true,
+                    'class-b': false
+                }
+            }
+        });
+    </script>
+</body>
+</html>
