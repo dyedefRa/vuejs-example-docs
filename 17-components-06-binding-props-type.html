@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .component{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <h1>Props Binding Types</h1>
+    <input type="text" v-model="parentMessage.msg" />{{parentMessage | json}}
+    <hr>
+    One-way down (default)
+    <my-component :my-message="parentMessage.msg"></my-component>
+    <hr>
+    Explicit two-way binding
+    <my-component :my-message.sync="parentMessage.msg"></my-component>
+    <hr>
+    Explicit one-time binding
+    <my-component :my-message.once="parentMessage.msg"></my-component>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    Vue.component('my-component', {
+        // declare the props
+        props: ['myMessage'],
+        // the prop can be used inside templates, and will also
+        // be set as `this.msg`
+        template: '<div class="component"><input v-model="myMessage"> {{myMessage}}</div>'
+    });
+
+    var vm = new Vue({
+        el: '#example',
+        data:{
+            parentMessage: {
+                name: 'Testing',
+                msg: 'Hello World form parent'
+            }
+        }
+    });
+</script>
+</body>
+</html>
