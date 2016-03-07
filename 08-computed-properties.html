@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computed properties</title>
+</head>
+<body>
+    <div id="example">
+        a = {{a}}, b={{b}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data: {
+                a: 1
+            },
+            computed: {
+                //a computed getter
+                b: function(){
+                    // `this` points to the vm instance
+                    return this.a+1;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
