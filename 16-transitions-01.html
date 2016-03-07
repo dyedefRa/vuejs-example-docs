@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /* always present */
+        .expand-transition {
+            transition: all .3s ease;
+            height: 30px;
+            padding: 10px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        /* .expand-enter defines the starting state for entering */
+        /* .expand-leave defines the ending state for leaving */
+        .expand-enter{
+            background-color: yellow;
+            height: 0px;
+        }
+        .expand-leave{
+            background-color: red;
+            height: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <input type="checkbox" v-model="show">
+    <div v-show="show" class="slide" transition="expand">
+            Vue.js' transition system
+        </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        Vue.transition('expand', {
+
+            beforeEnter: function (el) {
+                el.textContent = 'beforeEnter'
+            },
+            enter: function (el) {
+                el.textContent = 'enter'
+            },
+            afterEnter: function (el) {
+                el.textContent = 'afterEnter'
+            },
+            enterCancelled: function (el) {
+                // handle cancellation
+            },
+
+            beforeLeave: function (el) {
+                el.textContent = 'beforeLeave'
+            },
+            leave: function (el) {
+                el.textContent = 'leave'
+            },
+            afterLeave: function (el) {
+                el.textContent = 'afterLeave'
+            },
+            leaveCancelled: function (el) {
+                // handle cancellation
+            }
+        })
+
+        var vm = new Vue({
+            el: '#example',
+            data:{
+                show: false
+            }
+        });
+    </script>
+</body>
+</html>
