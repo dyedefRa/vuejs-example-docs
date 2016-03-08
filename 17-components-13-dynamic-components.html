@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="dynamic-components">
+        <input type="radio" name="components" value="home" v-model="currentView">
+        <input type="radio" name="components" value="posts" v-model="currentView">
+        <input type="radio" name="components" value="archives" v-model="currentView">
+        <component :is="currentView"></component>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+
+        var Home = Vue.extend({
+            template: '<div>Home</div>'
+        });
+        var Posts = Vue.extend({
+            template: '<div>Posts</div>'
+        });
+        var Archives = Vue.extend({
+            template: '<div>Archives</div>'
+        });
+
+
+        var parent = new Vue({
+            el: '#dynamic-components',
+            data: {
+                currentView: 'home'
+            },
+            components: {
+                'home':Home,
+                'posts':Posts,
+                'archive':Archives
+            }
+        });
+
+        // accessing child component from $ref
+        var child = parent.$refs.profile;
+    </script>
+</body>
+</html>
