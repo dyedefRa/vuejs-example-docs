@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .parent{
+            background-color: yellow;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .child{
+            background-color: red;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="slots-example">
+        <parent>
+            <child title="Foo"></child>
+            <child title="Bar"></child>
+        </parent>
+    </div>
+
+    <!-- template for parent -->
+    <template id="parent-template">
+        <div class="parent">
+            {{ msg }}
+            <slot>Nothing</slot>
+        </div>
+    </template>
+
+    <!-- template for child -->
+    <template id="child-template">
+        <div class="child">
+            <div><strong>{{title}}</strong></div>
+            {{ msg }}
+        </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+
+        Vue.component('parent', {
+            template: '#parent-template',
+            data: function() {
+                return {
+                    msg: 'Parent component'
+                }
+            }
+        });
+
+        Vue.component('child', {
+            template: '#child-template',
+            data: function() {
+                return {
+                    msg: 'Child component'
+                }
+            },
+            props:{
+                title: String
+            }
+        });
+
+        var parent = new Vue({
+            el: '#slots-example',
+            data: {
+                test: 'Testing'
+            }
+        });
+
+        // accessing child component from $ref
+        var child = parent.$refs.profile;
+    </script>
+</body>
+</html>

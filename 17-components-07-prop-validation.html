@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .component{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <h1>Prop validation</h1>
+
+    <input type="text" v-model="parentMessage" />
+
+    <example v-bind:prop-a="1" prop-b="testing" :prop-f="100" :prop-g="1" prop-h="[1,2,3,4]" :prop-e.sync="parentMessage"></example>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    Vue.component('example', {
+        props: {
+            // basic type check (`null` means accept any type
+            propA: Number,
+            //a required String
+            propB:{
+                type: String,
+                required: true
+            },
+            //a number with default value
+            propC: {
+                type: Number,
+                default: 100
+            },
+            //object/array defaults should be returned from a factory function
+            propD: {
+                type: Object,
+                default: function(){
+                    return { msg: 'hello'}
+                }
+            },
+            //indicate this prop expects a two-way binding. Will raise[
+            // a warning if biding type does not match
+            propE: {
+                twoWay: true
+            },
+            //custom validator function
+            propF:{
+                validator: function(value){
+                    return value > 10
+                }
+            },
+            //corce function (new in 1.0.12)
+            // cast the value before setting it on the component
+            propG: {
+                coerce: function(val){
+                    return val + ''; //cast the value to string
+                }
+            },
+            propH: {
+                coerce: function(val){
+                    return JSON.parse(val); //cast the value to Object
+                }
+            }
+        },
+        template: '<div class="component">{{ $data | json }}</div>'
+    });
+
+    var vm = new Vue({
+        el: '#example',
+        data:{
+            parentMessage: 'Hello World form parent'
+        }
+    });
+</script>
+</body>
+</html>

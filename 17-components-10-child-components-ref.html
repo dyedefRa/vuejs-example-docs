@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .component{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div id="parent">
+    <user-profile v-ref:profile></user-profile>
+</div>
+
+<!--template for child-->
+<template id="user-profile-template">
+   <div class="text">{{ msg }}</div>
+</template>
+
+<script src="vue.js"></script>
+<script>
+
+    Vue.component('user-profile', {
+        template: '#user-profile-template',
+        data: function() {
+            return {
+                msg: 'Hello, I am a child component',
+                count: 100
+            }
+        }
+    });
+
+    var parent = new Vue({
+        el: '#parent',
+        data: {
+            test: 'Testing'
+        }
+    });
+
+    // accessing child component from $ref
+    var child = parent.$refs.profile;
+</script>
+</body>
+</html>
