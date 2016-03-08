@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        *{
+            font-family: Arial;
+        }
+        .help-list{
+            border: 1px solid #ccc;
+        }
+        .help-list > .title{
+            background-color: lightgreen;
+            padding: 5px;
+        }
+        .help-list > .resume{
+            background: #D3FFCF;
+            padding: 15px;
+            font-style: italic;
+        }
+        .help-list > .topics{
+            background: #eeffe8;
+            padding: 20px;
+        }
+        .help-list .help-item {
+            padding: 3px;
+        }
+        .help-list .help-item .title{
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <h1 v-if="activeList">Active list: {{activeList}}</h1>
+        <help-list title="PHP" resume="Topics about PHP programming language" @active-list="getActiveList">
+            <help-item title="What is PHP?" resume="PHP is a programming language..." @topic="test"></help-item>
+            <help-item title="Installing PHP" resume="The installation process is very simple. You need..."></help-item>
+            <help-item title="Variables" resume="Variables are basics structures to perform operations"></help-item>
+            <help-item title="Functions" resume="Functions are magical"></help-item>
+        </help-list>
+
+        <help-list title="HTML" resume="Topics about PHP programming language" @active-list="getActiveList">
+            <help-item title="Functions" resume="Functions are magical"></help-item>
+        </help-list>
+    </div>
+
+    <!--help list template -->
+    <template id="help-list-template">
+        <div class="help-list">
+            <h2>Active topic: {{activeTopic}}</h2>
+            <div class="title">{{ title }}</div>
+            <div class="resume">{{ resume }}</div>
+            <div class="topics">
+                <slot></slot>
+            </div>
+            <div class="footer">
+                <a href @click="notifyParent">Send event to app</a>
+            </div>
+        </div>
+    </template>
+
+    <!--help item template -->
+    <template id="help-item-template">
+        <div class="help-item">
+            <span class="title">{{ title }}</span>
+            <span class="resume">{{ resume }}</span>
+            <div class="footer">
+                <a href @click="notify">Send event to parent</a>
+            </div>
+        </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+
+        Vue.component('help-list', {
+            template: '#help-list-template',
+            props: ['title', 'resume'],
+            methods: {
+                notifyParent: function(event){
+                    event.preventDefault();
+                    console.log('Calling help window on parent...');
+                    this.$dispatch('active-list', this.title);
+                },
+                test: function(){
+                    alert('sdfsdf');
+                }
+            }
+        });
+
+        Vue.component('help-item', {
+            template: '#help-item-template',
+            props: ['title', 'resume'],
+            methods: {
+                notify: function(event){
+                    event.preventDefault();
+                    this.$dispatch('topic', 'asdfsdfsdfsdf');
+                },
+            }
+        });
+
+        var App = new Vue({
+            el: '#app',
+            data: {
+                activeList: ''
+            },
+            props: [],
+            methods: {
+                getActiveList: function(title){
+                    this.activeList = title;
+                },
+                test: function(){
+                    alert('TESTE');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
