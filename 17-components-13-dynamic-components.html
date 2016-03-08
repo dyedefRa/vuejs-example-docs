@@ -9,14 +9,22 @@
         <input type="radio" name="components" value="home" v-model="currentView">
         <input type="radio" name="components" value="posts" v-model="currentView">
         <input type="radio" name="components" value="archives" v-model="currentView">
-        <component :is="currentView"></component>
+
+        <div>
+            Without keep-alive
+            <component :is="currentView"></component>
+        </div>
+        <div>
+            With keep-alive
+            <component :is="currentView" keep-alive></component>
+        </div>
     </div>
 
     <script src="vue.js"></script>
     <script>
 
         var Home = Vue.extend({
-            template: '<div>Home</div>'
+            template: '<div>Home <input v-model="homeScope">{{homeScope}}</div>'
         });
         var Posts = Vue.extend({
             template: '<div>Posts</div>'
