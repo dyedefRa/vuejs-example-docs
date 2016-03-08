@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="423ecd64-e519-4c86-b726-0d853a5000f8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/17-components-13-dynamic-components.html" afterPath="$PROJECT_DIR$/17-components-13-dynamic-components.html" />
     </list>
     <ignored path="example-docs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +38,8 @@
       <file leaf-file-name="17-components-13-dynamic-components.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/17-components-13-dynamic-components.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32755297">
-              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.8516378">
+              <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -633,8 +634,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/17-components-13-dynamic-components.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32755297">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.8516378">
+          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
           <folding />
         </state>
       </provider>
