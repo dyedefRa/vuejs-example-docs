@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="dynamic-components">
+        <input type="radio" name="components" value="home" v-model="currentView">
+        <input type="radio" name="components" value="posts" v-model="currentView">
+        <input type="radio" name="components" value="archives" v-model="currentView">
+
+        <div>
+            Without keep-alive
+            <component :is="currentView"></component>
+        </div>
+        <div>
+            With keep-alive
+            <component :is="currentView" keep-alive></component>
+        </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+
+        var Home = Vue.extend({
+            template: '<div>Home <input v-model="homeScope">{{homeScope}}</div>',
+            activate: function(done){
+//                var self = this;
+//                loadDataSync(function(data){
+//                    self.someData = data;
+//                    done();
+//                });
+                console.log('switch');
+            }
+        });
+        var Posts = Vue.extend({
+            template: '<div>Posts</div>'
+        });
+        var Archives = Vue.extend({
+            template: '<div>Archives</div>'
+        });
+
+
+        var parent = new Vue({
+            el: '#dynamic-components',
+            data: {
+                currentView: 'posts'
+            },
+            components: {
+                'home':Home,
+                'posts':Posts,
+                'archives':Archives
+            }
+        });
+
+        // accessing child component from $ref
+        var child = parent.$refs.profile;
+    </script>
+</body>
+</html>
