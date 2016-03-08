@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .parent{
+            background-color: yellow;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .child{
+            background-color: red;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="named-slots-example">
+        <multi-insertion>
+            <p slot="one">One</p>
+            <p slot="two">Two</p>
+            <p>Default</p>
+        </multi-insertion>
+    </div>
+
+    <!-- template for multi-insertion -->
+    <template id="multi-insertion-template">
+        <div>
+            <slot name="one"></slot>
+            <slot></slot>
+            <slot name="two"></slot>
+        </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+
+        Vue.component('multi-insertion', {
+            template: '#multi-insertion-template'
+        });
+
+        var parent = new Vue({
+            el: '#named-slots-example',
+            data: {
+                test: 'Testing'
+            }
+        });
+
+        // accessing child component from $ref
+        var child = parent.$refs.profile;
+    </script>
+</body>
+</html>
